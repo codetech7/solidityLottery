@@ -23,12 +23,22 @@ beforeEach(async () => {
 describe("deploy contract", async () => {
   it("can deploy", async () => {
     assert.ok(inbox.options.address);
+  });
+  //check if it can set constructor message
+  it("has a default message",() =>{ 
     const message = await inbox.methods.message().call()
     assert.equal(message, INITIAL_MESSAGE);
 
-  }) 
+  });
+  
+  //check if it can update
+  it("can update", async () => {
+    
+    inbox.options.setMessage("whatever").call();
+    const message = await inbox.methods.message().call();
+    assert.equal(message, "whatever");
+  })
   
   
 
-}
-);
+});
