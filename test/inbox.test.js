@@ -25,7 +25,7 @@ describe("deploy contract", async () => {
     assert.ok(inbox.options.address);
   });
   //check if it can set constructor message
-  it("has a default message",() =>{ 
+  it("has a default message", async () => { 
     const message = await inbox.methods.message().call()
     assert.equal(message, INITIAL_MESSAGE);
 
@@ -34,7 +34,7 @@ describe("deploy contract", async () => {
   //check if it can update
   it("can update", async () => {
     
-    inbox.options.setMessage("whatever").call();
+    await inbox.methods.setMessage("whatever").send({from: accounts[1], gas: 50000});
     const message = await inbox.methods.message().call();
     assert.equal(message, "whatever");
   })
