@@ -14,14 +14,16 @@ beforeEach(async () => {
     //deploy from the first account gotten
    inbox = await new  web3.eth.Contract(JSON.parse(interface))
     .deploy({data: bytecode, arguments:[ "Hello World"]})
-    .send({from: accounts[0], gas: 1000000}); // returns address of deployed contract on blockchain
+    .send({from: accounts[0], gas: 900000}); // returns address of deployed contract on blockchain
 
 }
 );
 
-describe("deploy contract", () => {
+describe("deploy contract", async () => {
   it("can deploy", () => {
     console.log(inbox);
+    console.log(accounts[0]);
+    
   }) 
   
   
