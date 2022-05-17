@@ -1,0 +1,23 @@
+{
+  "name": "lottery",
+  "version": "1.0.0",
+  "description": "A lottery system built in solidity",
+  "main": "compile.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codetech7/solidityLottery.git"
+  },
+  "author": "Aaron Israel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codetech7/solidityLottery/issues"
+  },
+  "homepage": "https://github.com/codetech7/solidityLottery#readme"
+}
