@@ -6,7 +6,6 @@
   "directories": {
     "test": "test"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/codetech7/solidityLottery/issues"
   },
-  "homepage": "https://github.com/codetech7/solidityLottery#readme"
+  "homepage": "https://github.com/codetech7/solidityLottery#readme",
+  "dependencies": {
+    "solc": "^0.8.14"
+  }
 }
