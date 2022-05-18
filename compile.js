@@ -15,4 +15,4 @@ const solc = require("solc");
 const lotteryPath = path.resolve(__dirname, "contracts", "lottery.sol");
 const source = fs.readFileSync(lotteryPath, "utf-8");
 
-module.exports = solc.compile(source, 1).contracts[":lottery"]
+solc.compile(source, 1);
