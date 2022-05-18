@@ -5,11 +5,11 @@ pragma solidity ^0.4.17;
  contract Lottery{
      address public manager;
      address[] public lotteryPlayers;
-     address[] private  requesters;
+    // address[] private  requesters;
    //  string public password;
      //string public username;
 
-     function Lottery() public payable money {
+     function Lottery() public payable {
         
          manager = msg.sender;  //the manager is the person who requested to create an object of the class
          //username = user;       //create username and password that will be used for validating who the new manager is
@@ -19,27 +19,27 @@ pragma solidity ^0.4.17;
      }
 
      modifier money(){  //used to require that the function is called with some certain amount of money alongside payable
-         require(msg.value > 1 ether);
+         require(msg.value > 100 wei);
          _;
 
      }
 
-    function requestMoney() public {
-        requesters.push(msg.sender);
-    }
+    // function requestMoney() public {
+    //     requesters.push(msg.sender);
+    // }
 
-     function moveMoney() public payable money {  //used to move money through a contract from one account to another.
-        //least amount to be sent is 100000 wei
+    //  function moveMoney() public payable money {  //used to move money through a contract from one account to another.
+    //     //least amount to be sent is 100000 wei
 
-        uint index = pseudoRandom() % requesters.length; 
-        requesters[index].transfer(msg.value);
+    //     uint index = pseudoRandom() % requesters.length; 
+    //     requesters[index].transfer(msg.value);
     
-     }
+    //  }
 
-     function showPlayerBalance() public view returns(uint) {
-         return msg.sender.balance;
+    //  function showPlayerBalance() public view returns(uint) {
+    //      return msg.sender.balance;
 
-     }
+    //  }
 
      function enter() public payable money {
         // require(msg.value > 100000 wei); //every player must enter the lottery with at least .01 ether.
@@ -48,13 +48,13 @@ pragma solidity ^0.4.17;
          
      }
 
-    function totalPool() public view returns(uint256) { //returns the total money contributed.
-        return this.balance;
-    }
+    // function totalPool() public view returns(uint256) { //returns the total money contributed.
+    //     return this.balance;
+    // }
 
-     function playerList() public view returns(address[]){ //returns how many players are in the contract
-      return lotteryPlayers;
-     }
+    //  function playerList() public view returns(address[]){ //returns how many players are in the contract
+    //   return lotteryPlayers;
+    //  }
 
      function pickWinner() public restricted returns (address) { //picks the final winner using a pseudi random mechanism
         uint index = pseudoRandom() % lotteryPlayers.length;
@@ -73,11 +73,11 @@ pragma solidity ^0.4.17;
          _;
      }
 
-     function setNewManager(/*string user, string pass*/) public { //sets a new manager for the funxtion.
-       //  require(user == this.username);
-     //    require(pass == this.password);
-         manager = msg.sender;
-     }
+    //  function setNewManager(/*string user, string pass*/) public { //sets a new manager for the funxtion.
+    //    //  require(user == this.username);
+    //  //    require(pass == this.password);
+    //      manager = msg.sender;
+    //  }
 
      }
  
