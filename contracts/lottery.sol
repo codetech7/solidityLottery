@@ -18,8 +18,13 @@ pragma solidity ^0.4.17;
         
      }
 
+     function numberOfPlayers() public returns (uint){
+         uint noOfPlayers = lotteryPlayers.length;
+         return noOfPlayers;
+     }
+
      modifier money(){  //used to require that the function is called with some certain amount of money alongside payable
-         require(msg.value > 100 wei);
+         require(msg.value > 999 wei);
          _;
 
      }
@@ -36,32 +41,32 @@ pragma solidity ^0.4.17;
     
     //  }
 
-    //  function showPlayerBalance() public view returns(uint) {
-    //      return msg.sender.balance;
+      function showPlayerBalance() public view returns(uint) {
+          return msg.sender.balance;
 
-    //  }
+      }
 
      function enter() public payable money {
-        // require(msg.value > 100000 wei); //every player must enter the lottery with at least .01 ether.
+        // require(msg.value > 1000 wei); //every player must enter the lottery with at least .01 ether.
 
          lotteryPlayers.push(msg.sender); // everyone who calls the enter function is a player and added to player array.
          
      }
 
-    // function totalPool() public view returns(uint256) { //returns the total money contributed.
-    //     return this.balance;
-    // }
+     function totalPool() public view returns(uint256) { //returns the total money contributed.
+         return this.balance;
+     }
 
-    //  function playerList() public view returns(address[]){ //returns how many players are in the contract
-    //   return lotteryPlayers;
-    //  }
+      function playerList() public view returns(address[]){ //returns how many players are in the contract
+       return lotteryPlayers;
+      }
 
-     function pickWinner() public restricted returns (address) { //picks the final winner using a pseudi random mechanism
+     function pickWinner() public restricted  { //picks the final winner using a pseudi random mechanism
         uint index = pseudoRandom() % lotteryPlayers.length;
          lotteryPlayers[index].transfer(this.balance);
         
          lotteryPlayers = new address[](0);  //use this to cleAR players list after picking a winner
-
+        
      }
 
      function pseudoRandom() private view returns(uint){ //generates a random number;
