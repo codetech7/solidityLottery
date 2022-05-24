@@ -89,6 +89,8 @@ beforeEach(async () => {
     assert.equal(0, initialNumberOfPlayers);
     assert.equal(1, mediumNumberOfPlayers);
     assert.equal(0, finalNumberOfPlayers);
+
+    
     
         // const fromM = await deployment.methods.showPlayerBalance().call();
         // const fromFive = await deployment.methods.showPlayerBalance().call({from: lotteryAccounts[5]});
